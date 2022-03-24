@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.emall.mapper.TbOrderMapper">
+    <resultMap id="BaseResultMap" type="com.emall.pojo.TbOrder">
+        <id column="order_id" jdbcType="VARCHAR" property="orderId"/>
+        <result column="user_id" jdbcType="BIGINT" property="userId"/>
+        <result column="payment_type" jdbcType="VARCHAR" property="paymentType"/>
+        <result column="created" jdbcType="TIMESTAMP" property="created"/>
+        <result column="updated" jdbcType="TIMESTAMP" property="updated"/>
+        <result column="payment_time" jdbcType="TIMESTAMP" property="paymentTime"/>
+        <result column="end_time" jdbcType="TIMESTAMP" property="endTime"/>
+        <result column="shipping_id" jdbcType="VARCHAR" property="shippingId"/>
+        <result column="payment" jdbcType="DECIMAL" property="payment"/>
+        <result column="status" jdbcType="INTEGER" property="status"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        order_id, user_id, payment_type, created, updated, payment_time, end_time, shipping_id, payment, status
+    </sql>
+
+    <insert id="insert" parameterType="TbOrder">
+        insert into tb_order values (#{orderId},#{userId},#{payment},#{created},#{updated},#{paymentTime},#{endTime},#{shippingId},#{payment},#{status})
+    </insert>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+        delete from tb_order where order_id=#{orderID}
+    </delete>
+
+    <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select * from tb_order where order_id=#{orderID}
+    </select>
+
+</mapper>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.emall.mapper.TbPayinfoMapper">
+    <resultMap id="BaseResultMap" type="com.emall.pojo.TbPayinfo">
+        <id column="id" jdbcType="VARCHAR" property="id"/>
+        <result column="user_id" jdbcType="BIGINT" property="userId"/>
+        <result column="order_id" jdbcType="VARCHAR" property="orderId"/>
+        <result column="payment" jdbcType="DECIMAL" property="payment"/>
+        <result column="payment_type" jdbcType="INTEGER" property="paymentType"/>
+        <result column="status" jdbcType="INTEGER" property="status"/>
+        <result column="created" jdbcType="TIMESTAMP" property="created"/>
+        <result column="updated" jdbcType="TIMESTAMP" property="updated"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id, user_id, order_id, payment, payment_type, status, created, updated
+    </sql>
+
+    <insert id="insert" parameterType="com.emall.pojo.TbPayinfo">
+        insert into tb_payinfo values (#{id},#{userId},#{orderId},#{payment},#{paymentType},#{status},#{created},#{updated})
+    </insert>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+        delete from tb_payinfo where id=#{id}
+    </delete>
+
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap">
+        select * from tb_payinfo where id=#{id}
+    </select>
+</mapper>

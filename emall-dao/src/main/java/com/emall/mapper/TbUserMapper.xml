@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.emall.mapper.TbUserMapper">
+    <resultMap id="BaseResultMap" type="com.emall.pojo.TbUser">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="username" jdbcType="VARCHAR" property="username"/>
+        <result column="password" jdbcType="VARCHAR" property="password"/>
+        <result column="phone" jdbcType="VARCHAR" property="phone"/>
+        <result column="email" jdbcType="VARCHAR" property="email"/>
+        <result column="sex" jdbcType="VARCHAR" property="sex"/>
+        <result column="status" jdbcType="INTEGER" property="status"/>
+        <result column="created" jdbcType="TIMESTAMP" property="created"/>
+        <result column="updated" jdbcType="TIMESTAMP" property="updated"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id, username, password, phone, email, sex, status, created, updated
+    </sql>
+
+    <insert id="insert" parameterType="com.emall.pojo.TbUser">
+        insert into tb_user values(#{id},#{username},#{password},#{phone},#{email},#{sex},#{status},#{created},#{updated})
+    </insert>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete from tb_user where id=#{id}
+    </delete>
+
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select * from tb_user where id=#{id}
+    </select>
+    
+    <select id="selectByUsername" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select * from tb_user where username=#{username}
+    </select>
+
+</mapper>

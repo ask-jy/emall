@@ -1,0 +1,22 @@
+*.class
+*.log
+*.lock
+
+#package files#
+*.jar
+*.war
+*.ear
+target/
+out/
+#idea
+.idea/
+*.iml
+
+*.iml
+*.ipr
+*.iws
+.idea
+.classpath
+.project
+.settings/
+bin/

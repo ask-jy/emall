@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.emall.mapper.TbOrderItemMapper">
+    <resultMap id="BaseResultMap" type="com.emall.pojo.TbOrderItem">
+        <id column="id" jdbcType="VARCHAR" property="id"/>
+        <result column="item_id" jdbcType="BIGINT" property="itemId"/>
+        <result column="order_id" jdbcType="VARCHAR" property="orderId"/>
+        <result column="num" jdbcType="INTEGER" property="num"/>
+        <result column="item_name" jdbcType="VARCHAR" property="itemName"/>
+        <result column="total_fee" jdbcType="DECIMAL" property="totalFee"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id, item_id, order_id, num, item_name, total_fee
+    </sql>
+
+    <insert id="insert" parameterType="TbOrderItem">
+        insert into tb_order_item values(#{id},#{itemId},#{orderId},#{num},#{itemName},#{totalFee})
+    </insert>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+        delete from tb_order_item where id=#{id}
+    </delete>
+
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap">
+        select * from tb_order_item where id=#{id}
+    </select>
+
+</mapper>

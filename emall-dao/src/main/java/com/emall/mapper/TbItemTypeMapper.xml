@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.emall.mapper.TbItemTypeMapper">
+    <resultMap id="BaseResultMap" type="com.emall.pojo.TbItemType">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="parent_id" jdbcType="BIGINT" property="parentID"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="status" jdbcType="VARCHAR" property="status"/>
+        <result column="created" jdbcType="TIMESTAMP" property="created"/>
+        <result column="updated" jdbcType="TIMESTAMP" property="updated"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id, parent_id, name, status, created, updated
+    </sql>
+
+    <insert id="insert" parameterType="TbItemType">
+        insert into tb_item_type (<include refid="Base_Column_List"></include>)
+        values (#{id}, #{parentID}, #{name}, #{status}, #{created},#{updated})
+    </insert>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete from tb_item_type where id=#{primaryKey}
+    </delete>
+
+    <update id="updateByPrimaryKey" parameterType="TbItemType">
+        update tb_item_type
+        <set>
+            <if test="parentID !=null">
+                parent_id=#{parentID}
+            </if>
+            <if test="name !=null">
+                name=#{name}
+            </if>
+            <if test="status !=null">
+                status=#{status}
+            </if>
+            <if test="created !=null">
+                created=#{created}
+            </if>
+            <if test="updated !=null">
+                updated=#{updated}
+            </if>
+        </set> where id=#{id}
+    </update>
+
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap">
+        select * from tb_item_type where id=#{i}
+    </select>
+</mapper>

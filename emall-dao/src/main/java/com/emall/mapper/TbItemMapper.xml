@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.emall.mapper.TbItemMapper">
+    <resultMap id="BaseResultMap" type="com.emall.pojo.TbItem">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="item_type" jdbcType="BIGINT" property="itemType"/>
+        <result column="price" jdbcType="DECIMAL" property="price"/>
+        <result column="num" jdbcType="INTEGER" property="num"/>
+        <result column="status" jdbcType="INTEGER" property="status"/>
+        <result column="created" jdbcType="TIMESTAMP" property="created"/>
+        <result column="updated" jdbcType="TIMESTAMP" property="updated"/>
+    </resultMap>
+    <select id="selectAll" resultMap="BaseResultMap">
+        select * from tb_item
+    </select>
+    
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select * from tb_item where id=#{id}
+    </select>
+
+    <select id="selectItemByCondition" resultMap="BaseResultMap">
+        select * from tb_item where name like #{search}
+    </select>
+
+    <insert id="insert" parameterType="TbItem">
+        insert into tb_item (id,name,item_type,price,num,status,created,updated)
+        values (#{id},#{name},#{itemType},#{price},#{num},#{status},#{created},#{updated})
+    </insert>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete from tb_item where id=#{id};
+    </delete>
+</mapper>
