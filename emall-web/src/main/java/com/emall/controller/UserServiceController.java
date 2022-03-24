@@ -1,7 +1,6 @@
 package com.emall.controller;
 
 import com.emall.service.UserService;
-import com.emall.service.iml.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
