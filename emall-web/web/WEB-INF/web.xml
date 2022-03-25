@@ -30,21 +30,28 @@
         <url-pattern>/</url-pattern>
     </servlet-mapping>
 
-
-<!--    &lt;!&ndash;字符编码过滤&ndash;&gt;-->
+<!--    &lt;!&ndash; 解决POST乱码 &ndash;&gt;-->
 <!--    <filter>-->
-<!--        <filter-name>encodingFilter</filter-name>-->
-<!--        &lt;!&ndash;<filter-class>com.kuang.filter.GenericEncodingFilter</filter-class>&ndash;&gt;-->
+<!--        <filter-name>CharacterEncodingFilter</filter-name>-->
 <!--        <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>-->
-<!--        &lt;!&ndash;参数：CharacterEncodingFilter&ndash;&gt;-->
 <!--        <init-param>-->
 <!--            <param-name>encoding</param-name>-->
 <!--            <param-value>utf-8</param-value>-->
 <!--        </init-param>-->
 <!--    </filter>-->
-<!--    <filter-mapping>-->
-<!--        <filter-name>encodingFilter</filter-name>-->
-<!--        <url-pattern>/*</url-pattern>-->
-<!--    </filter-mapping>-->
+
+<!--    &lt;!&ndash;字符编码过滤&ndash;&gt;-->
+    <filter>
+        <filter-name>encodingFilter</filter-name>
+        <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>utf-8</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>encodingFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
 
 </web-app>
