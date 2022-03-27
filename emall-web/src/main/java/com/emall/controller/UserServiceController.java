@@ -21,7 +21,6 @@ public class UserServiceController {
 
         @RequestMapping("/hello")
         public String hello(Model model){
-
             model.addAttribute("msg","hello");
             return "hello";
         }

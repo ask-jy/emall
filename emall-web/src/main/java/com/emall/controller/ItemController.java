@@ -16,6 +16,12 @@ public class ItemController {
     @Autowired
     ItemService itemService;
 
+    /**
+     * 获取
+     * @param name
+     * @param model
+     * @return
+     */
     @RequestMapping("/item/{name}")
     String getItemByCondition(@PathVariable("name") String name, Model model){
         List<TbItem> item = itemService.getItemByName(name);

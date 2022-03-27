@@ -17,5 +17,7 @@ public interface TbItemMapper {
 
     List<TbItem> selectByPrimaryKey(Long id);
 
+    List<TbItem> selectByItemType(Long itemType);
+
     List<TbItem> selectItemByCondition(@Param("search") String search);
 }

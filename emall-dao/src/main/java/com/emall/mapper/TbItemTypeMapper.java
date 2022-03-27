@@ -12,7 +12,7 @@ public interface TbItemTypeMapper {
 
      int updateByPrimaryKey(TbItemType record);
 
-     List<TbItemType> selectByName();
+     TbItemType selectByName(String name);
 
      List<TbItemType> selectByPrimaryKey(int i);
 

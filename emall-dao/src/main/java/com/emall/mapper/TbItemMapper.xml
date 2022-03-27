@@ -22,6 +22,10 @@
         select * from tb_item where id=#{id}
     </select>
 
+    <select id="selectByItemType" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select * from tb_item where item_type=#{itemType}
+    </select>
+
     <select id="selectItemByCondition" resultMap="BaseResultMap">
         select * from tb_item where name like #{search}
     </select>
