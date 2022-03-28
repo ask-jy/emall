@@ -5,6 +5,7 @@ import com.emall.pojo.TbItem;
 import com.emall.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -13,6 +14,7 @@ public class ItemServiceImpl implements ItemService {
 
     @Autowired
     TbItemMapper tbItemMapper;
+
 
     public List<TbItem> getItemByName(String name) {
         String condition='%'+name+'%';

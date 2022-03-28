@@ -16,6 +16,14 @@
 
     <context:annotation-config/>
     <mvc:annotation-driven/>
+    <!--拦截器配置-使用注解配置无法拦截到-->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <!--暂时默认拦截所有请求，到时根据需求改变-->
+            <mvc:mapping path="/user"/>
+            <bean class="com.emall.interceptor.MyInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
     <!-- 2.静态资源默认servlet配置-->
     <mvc:default-servlet-handler/>
     <!-- 3.配置jsp 显示ViewResolver视图解析器 -->

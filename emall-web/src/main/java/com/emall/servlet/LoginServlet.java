@@ -28,10 +28,12 @@ public class LoginServlet extends HttpServlet {
 
     @Autowired
     UserServiceImpl userService;
+
     @Override
     @PostMapping("/loginServlet")
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+        //登录验证
         String username=req.getParameter("username");
         String password=req.getParameter("password");
 

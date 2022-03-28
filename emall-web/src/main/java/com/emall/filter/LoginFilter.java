@@ -14,7 +14,7 @@ import java.io.IOException;
 @WebFilter("/user")
 public class LoginFilter implements Filter {
     public void init(FilterConfig filterConfig) throws ServletException {
-
+        System.out.println("filter初始化");
     }
 
     public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain) throws IOException, ServletException {
