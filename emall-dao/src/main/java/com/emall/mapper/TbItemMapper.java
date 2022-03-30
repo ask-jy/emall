@@ -15,7 +15,7 @@ public interface TbItemMapper {
 
     List<TbItem> selectAll();
 
-    List<TbItem> selectByPrimaryKey(Long id);
+    TbItem selectByPrimaryKey(Long id);
 
     List<TbItem> selectByItemType(Long itemType);
 

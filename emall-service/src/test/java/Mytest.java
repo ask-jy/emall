@@ -2,10 +2,12 @@ import com.emall.mapper.*;
 import com.emall.pojo.*;
 
 
+import com.emall.service.iml.OrderServiceImpl;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.util.List;
@@ -193,5 +195,17 @@ public class Mytest {
         for ( TbUser itemType : tb) {
             System.out.println(itemType);
         }
+    }
+
+    @Test
+    public void testtranscational(){
+        //测试事务是否生效
+        ApplicationContext applicationContext=new ClassPathXmlApplicationContext("spring/applicationContext-dao.xml");
+        OrderServiceImpl bean = applicationContext.getBean(OrderServiceImpl.class);
+        TbUserMapper bean1 = applicationContext.getBean(TbUserMapper.class);
+        TbItemMapper bean2 = applicationContext.getBean(TbItemMapper.class);
+        TbItem tbItem= (TbItem) bean2.selectByPrimaryKey((long) 562379);
+        TbUser tbUser= (TbUser) bean1.selectByUsername("ljy");
+        bean.createOrder(tbItem,tbUser);
     }
 }

@@ -27,7 +27,7 @@
         <!-- 加载Mybatis全局配置文件 -->
         <property name="configLocation" value="classpath:mybatis/mybatis-config.xml" />
     </bean>
-    <context:component-scan base-package="com.emall.mapper"/>
+    <context:component-scan base-package="com.emall"/>
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="basePackage" value="com.emall.mapper" />
     </bean>
